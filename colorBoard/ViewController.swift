@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    // 重置为初始值
     @IBAction func reset(_ sender: UIButton) {
         greenSlider.value = 1
         redSlider.value = 1
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
         blueSwitch.isOn = false
         updateControls()
     }
+    // 当view里的控件发生变化后更新颜色和控制
     @IBAction func sliderChanged(_ sender: UISlider) {
         updateColor()
         updateControls()
@@ -29,11 +31,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var redSwitch: UISwitch!
     @IBOutlet weak var blueSwitch: UISwitch!
     
+    // 我认为这个可以和上面的sliderChanged合并 :)
     @IBAction func colorViewUISwitch(_ sender: UISwitch) {
         updateColor()
         updateControls()
     }
     
+    // switch打开时才会请允许slider的使用
     func updateControls() {
         redSlider.isEnabled = redSwitch.isOn
         greenSlider.isEnabled = greenSwitch.isOn
@@ -42,6 +46,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var colorView: UIView!
     
+    // 从三个Switch和Slider的值得出颜色，更新到colorView的background里去
     func updateColor() {
         var red: CGFloat = 0
         var green: CGFloat = 0
